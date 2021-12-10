@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
+from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from writeups.models import Post
 
@@ -34,3 +35,8 @@ class TagCreateView(CreateView, LoginRequiredMixin):
 class PostDeleteView(DeleteView, LoginRequiredMixin):
     template_name = 'writeups/writeups_delete_confirm.html'
     model = Post
+    success_url = reverse_lazy('writeups:list')
+
+
+class UserLoginView(LoginView):
+    template_name = 'writeups/login.html'
