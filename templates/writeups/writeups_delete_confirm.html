@@ -1,1 +1,12 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
+{% block body_block %}
+    <h1>Confirm Deletion</h1>
+    <p>Are you sure you want to delete the post titled {{ post.title }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        {% buttons %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

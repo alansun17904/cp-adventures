@@ -1,1 +1,25 @@
 {% extends "base.html" %}
+{% load extras %}
+{% block body_block %}
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Archives</h1>
+        <p class="lead">Archives of my notes/writeups of leetcode, competition, and other practice problems.</p>
+    </div>
+    {% for post in posts %}
+        <div class="card" style="width: 18rem; display: inline-block">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    {{ post.date }}
+                </h6>
+                <p class="card-text">
+                    {{ post.text|preview }}
+                </p>
+                <a href="{% url 'writeups:detail' pk=post.pk %}" class="card-link">Details</a>
+                {% if post.url %}
+                <a href="{{ post.url }}" class="card-link">Problem</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

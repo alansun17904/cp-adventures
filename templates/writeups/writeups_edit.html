@@ -1,1 +1,11 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
+{% block body_block %}
+    <form method="POST">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        {% buttons %}
+            <button class="btn btn-warning" type="submit">Edit</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

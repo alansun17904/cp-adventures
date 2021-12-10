@@ -1,1 +1,15 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
+{% block body_block %}
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Add Post</h1>
+    </div>
+
+    <form method="POST">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        {% buttons %}
+            <button class="btn btn-primary" type="submit">Create</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}
