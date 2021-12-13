@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
 from django.contrib.auth.views import LoginView
+from .forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from writeups.models import Post
 
@@ -19,13 +20,14 @@ class PostDetailView(DetailView):
 class PostCreateView(CreateView, LoginRequiredMixin):
     template_name = 'writeups/writeups_add.html'
     model = Post
+    form_class = PostForm
     fields = ('title', 'url', 'text', 'tags')
 
 
 class PostUpdateView(UpdateView, LoginRequiredMixin):
     template_name = 'writeups/writeups_edit.html'
     model = Post
-    fields = ('title', 'url', 'text', 'tags')
+    form_class = PostForm
 
 
 class TagCreateView(CreateView, LoginRequiredMixin):
