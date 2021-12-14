@@ -6,7 +6,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <!-- CSS only -->
@@ -15,55 +15,58 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
     <script src="{% static 'js/medium-button.js' %}"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css"
+          type="text/css" media="screen" charset="utf-8">
+    <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet"/>
+    <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet"/>
     <title>Alan's CP Adventures</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-            <a class="nav-link" href="{% url 'writeups:list' %}">Posts</a>
-            {% if user.is_authenticated %}
-                <a class="nav-link" href="{% url 'writeups:add' %}">Add</a>
-                <a class="nav-link" href="{% url 'admin:index' %}">Staff</a>
-                {% else %}
-                <a class="nav-link" href="{% url 'writeups:login' %}">Login</a>
-            {% endif %}
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+        <a class="nav-link" href="{% url 'writeups:list' %}">Posts</a>
+        {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'writeups:add' %}">Add</a>
+            <a class="nav-link" href="{% url 'admin:index' %}">Staff</a>
+        {% else %}
+            <a class="nav-link" href="{% url 'writeups:login' %}">Login</a>
+        {% endif %}
 
-        </div>
-    </nav>
-    <div class="container">
-        {% block body_block %}
-        {% endblock %}
     </div>
-    <script>
-        var editor = new MediumEditor('.editable', {
-            toolbar: {
-                buttons: [
-                    'bold', 'italic', 'underline', 'h1', 'h2', 'code',
-                    'pre'
-                ]
-            },
-            extensions: {
-                'pre': new MediumButton({
-                    label: 'pre', // Button Label: HTML and Font-Awesome is possible
-                    start: '<pre><code class="language-python"', // Beginning of the selection
-                    end: '</code></pre>' // End of the selection
-                }),
-                'code': new MediumButton({
-            label:'code', // Button Label: HTML and Font-Awesome is possible
-            start:'<code>', // Beginning of the selection
-            end:'</code>' // End of the selection
-        })
-            }
-        });
-        window.onload = function() {
-            $("pre").wrapInner('<code class="language-python"></code>');
+</nav>
+<div class="container">
+    {% block body_block %}
+    {% endblock %}
+</div>
+<script>
+    var editor = new MediumEditor('.editable', {
+        toolbar: {
+            buttons: [
+                'bold', 'italic', 'underline', 'h1', 'h2', 'code',
+                'pre'
+            ]
+        },
+        extensions: {
+            'pre': new MediumButton({
+                label: 'pre', // Button Label: HTML and Font-Awesome is possible
+                start: '<pre><code class="language-python"', // Beginning of the selection
+                end: '</code></pre>' // End of the selection
+            }),
+            'code': new MediumButton({
+                label: 'code', // Button Label: HTML and Font-Awesome is possible
+                start: '<code>', // Beginning of the selection
+                end: '</code>' // End of the selection
+            })
         }
-    </script>
+    });
+    window.onload = function () {
+        $("pre").wrapInner('<code class="language-python"></code>');
+    }
+</script>
 </body>
 </html>

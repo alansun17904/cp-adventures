@@ -9,5 +9,5 @@ urlpatterns = [
     path('posts/edit/<int:pk>', views.PostUpdateView.as_view(), name='edit'),
     path('posts/detail/<int:pk>', views.PostDetailView.as_view(), name='detail'),
     path('posts/delete/<int:pk>', views.PostDeleteView.as_view(), name='delete'),
-    path('login', views.UserLoginView.as_view(), name='login')
+    path('login', views.UserLoginView.as_view(), name='login'),
 ]

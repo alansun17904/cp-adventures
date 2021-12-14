@@ -1,13 +1,13 @@
 from django import forms
 from writeups.models import Post
+from martor.fields import MartorFormField
 
 
 class PostForm(forms.ModelForm):
+    text = MartorFormField
+
     class Meta:
         model = Post
         fields = ('title', 'url', 'text', 'tags')
-        widgets = {
-            'title': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'text': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
-        }
+
 

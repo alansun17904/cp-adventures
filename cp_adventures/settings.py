@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'markdownify.apps.MarkdownifyConfig',
     'bootstrap5',
+    'martor',
     'writeups',
 ]
 

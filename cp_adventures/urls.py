@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='home'),
     path('writeups/', include('writeups.urls')),
+    path('martor/', include('martor.urls'))
 ]
