@@ -21,7 +21,6 @@ class PostCreateView(CreateView, LoginRequiredMixin):
     template_name = 'writeups/writeups_add.html'
     model = Post
     form_class = PostForm
-    fields = ('title', 'url', 'text', 'tags')
 
 
 class PostUpdateView(UpdateView, LoginRequiredMixin):
